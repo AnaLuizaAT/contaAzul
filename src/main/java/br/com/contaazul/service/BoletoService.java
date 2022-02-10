@@ -17,7 +17,7 @@ public class BoletoService {
         BoletoEntity boletoEntity = new BoletoEntity();
         boletoEntity.setDue_date(boletoRequest.getDue_date());
         boletoEntity.setCustomer(boletoRequest.getCustomer());
-        boletoEntity.setStatus((BoletoEnum) boletoRequest.getStatus());
+        boletoEntity.setStatus(boletoRequest.getStatus());
         boletoEntity.setTotal_in_cents(boletoRequest.getTotal_in_cents());
         boletoRepository.save(boletoEntity);
     }
