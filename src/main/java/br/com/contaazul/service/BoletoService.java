@@ -39,4 +39,12 @@ public class BoletoService {
             boletoRepository.save(boletoEntity.get());
         }
     }
+
+    public void cancelar(UUID id, BoletoEnum status) {
+        Optional<BoletoEntity> boletoEntity = boletoRepository.findById(id);
+        if (boletoEntity.isPresent()) {
+            boletoEntity.get().setStatus(BoletoEnum.CANCELED);
+            boletoRepository.save(boletoEntity.get());
+        }
+    }
 }
