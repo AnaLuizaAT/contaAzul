@@ -4,13 +4,14 @@ import br.com.contaazul.enums.BoletoEnum;
 import lombok.Data;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 public class BoletoRequest {
 
     private BoletoEnum status;
-    private Date due_date;
+    private LocalDate due_date;
+    private LocalDate payment_date;
     private String customer;
     private BigDecimal total_in_cents;
 }

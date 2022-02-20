@@ -7,6 +7,10 @@ import br.com.contaazul.repository.entity.BoletoEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.Optional;
+import java.util.UUID;
+
 @Service
 @RequiredArgsConstructor
 public class BoletoService {
@@ -17,7 +21,7 @@ public class BoletoService {
         BoletoEntity boletoEntity = new BoletoEntity();
         boletoEntity.setDue_date(boletoRequest.getDue_date());
         boletoEntity.setCustomer(boletoRequest.getCustomer());
-        boletoEntity.setStatus(boletoRequest.getStatus());
+        boletoEntity.setStatus(BoletoEnum.PENDING);
         boletoEntity.setTotal_in_cents(boletoRequest.getTotal_in_cents());
         boletoRepository.save(boletoEntity);
     }
@@ -25,5 +29,14 @@ public class BoletoService {
     public Iterable<BoletoEntity> retornarBoletos() {
         Iterable<BoletoEntity> boletos = boletoRepository.findAll();
         return boletos;
+    }
+
+    public void pagar(UUID id, LocalDate payment_date) {
+        Optional<BoletoEntity> boletoEntity = boletoRepository.findById(id);
+        if (boletoEntity.isPresent()) {
+            boletoEntity.get().setStatus(BoletoEnum.PAID);
+            boletoEntity.get().setPayment_date(payment_date);
+            boletoRepository.save(boletoEntity.get());
+        }
     }
 }

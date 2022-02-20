@@ -13,9 +13,9 @@ dependencies {
 
     annotationProcessor 'org.projectlombok:lombok:1.18.22'
 
-    implementation 'com.h2database:h2:2.0.206'
+    implementation 'com.h2database:h2:2.1.210'
+    implementation 'org.apache.commons:commons-math3:3.6.1'
     implementation 'javax.xml.bind:jaxb-api:2.4.0-b180830.0359'
-
 
     compileOnly 'org.projectlombok:lombok:1.18.22'
 
