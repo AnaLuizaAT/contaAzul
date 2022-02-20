@@ -35,7 +35,7 @@ public class BoletoController {
 
     @PostMapping("/{id}/payments")
     @ResponseStatus(HttpStatus.OK)
-    public void pagarBoleto(@RequestBody BoletoEntity boletoEntity, @PathVariable UUID id) {
-        boletoService.pagar;
+    public void pagarBoleto(@RequestBody BoletoRequest boletoRequest, @PathVariable UUID id) {
+        boletoService.pagar(id, boletoRequest.getPayment_date());
     }
 }
