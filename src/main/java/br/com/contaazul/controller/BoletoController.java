@@ -42,7 +42,7 @@ public class BoletoController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void cancelarBoleto(@RequestBody BoletoRequest boletoRequest, @PathVariable UUID id) {
+    public void cancelarBoleto(BoletoRequest boletoRequest, @PathVariable UUID id) {
         boletoService.cancelar(id, boletoRequest.getStatus());
     }
 }
