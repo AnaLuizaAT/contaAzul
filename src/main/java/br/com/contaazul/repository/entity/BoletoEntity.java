@@ -30,9 +30,14 @@ public class BoletoEntity {
 
     @Column(precision = 11, scale = 0)
     private BigDecimal total_in_cents;
+    private BigDecimal juros;
+
+    private BoletoEnum status;
 
     private LocalDate due_date;
+    private LocalDate actual_date;
     private LocalDate payment_date;
+
     private String customer;
-    private BoletoEnum status;
+
 }

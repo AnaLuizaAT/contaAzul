@@ -7,9 +7,12 @@ import br.com.contaazul.repository.entity.BoletoEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.util.Optional;
 import java.util.UUID;
+import java.time.temporal.ChronoUnit;
 
 @Service
 @RequiredArgsConstructor
@@ -46,5 +49,13 @@ public class BoletoService {
             boletoEntity.get().setStatus(BoletoEnum.CANCELED);
             boletoRepository.save(boletoEntity.get());
         }
+    }
+
+    public BigDecimal juros(BigDecimal juros, LocalDate due_date, LocalDate actual_date) {
+        BigDecimal days = new BigDecimal(ChronoUnit.DAYS.between(due_date, actual_date));
+        if (days.compareTo(new BigDecimal(10)) <=0) {
+            return juros.multiply(new BigDecimal("0.005").multiply(days)).setScale(0, RoundingMode.HALF_EVEN);
+        }
+        return juros.multiply(new BigDecimal("0.01").multiply(days)).setScale(0, RoundingMode.HALF_EVEN);
     }
 }

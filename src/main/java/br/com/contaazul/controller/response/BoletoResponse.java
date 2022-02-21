@@ -11,9 +11,14 @@ import java.time.LocalDate;
 @Builder
 public class BoletoResponse {
 
-    private BoletoEnum status;
-    private LocalDate due_date;
-    private LocalDate payment_date;
     private String customer;
+
+    private BigDecimal juros;
     private BigDecimal total_in_cents;
+
+    private BoletoEnum status;
+
+    private LocalDate due_date;
+    private LocalDate actual_date;
+    private LocalDate payment_date;
 }

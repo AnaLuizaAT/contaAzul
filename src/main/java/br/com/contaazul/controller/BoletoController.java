@@ -28,6 +28,12 @@ public class BoletoController {
         return boletoService.retornarBoletos();
     }
 
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void juros(@RequestBody BoletoRequest boletoRequest, @PathVariable UUID id) {
+        boletoService.juros(id, boletoRequest.getDue_date());
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void cadastrarBoleto(@RequestBody BoletoRequest boletoRequest) {
