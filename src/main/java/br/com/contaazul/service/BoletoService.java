@@ -51,7 +51,7 @@ public class BoletoService {
         }
     }
 
-    public BigDecimal juros(BigDecimal juros, LocalDate due_date, LocalDate actual_date) {
+    public BigDecimal juros(BigDecimal juros, LocalDate due_date, LocalDate actual_date, UUID id) {
         BigDecimal days = new BigDecimal(ChronoUnit.DAYS.between(due_date, actual_date));
         if (days.compareTo(new BigDecimal(10)) <=0) {
             return juros.multiply(new BigDecimal("0.005").multiply(days)).setScale(0, RoundingMode.HALF_EVEN);
