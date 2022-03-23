@@ -32,7 +32,7 @@ public class BoletoController {
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public BigDecimal juros(@RequestBody BoletoRequest boletoRequest, @PathVariable UUID id) {
-        return boletoService.juros(id, );
+        return boletoService.juros(id, , boletoRequest.getJuros());
     }
 
     @PostMapping
