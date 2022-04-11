@@ -31,8 +31,8 @@ public class BoletoController {
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public BigDecimal juros(@RequestBody BoletoRequest boletoRequest, @PathVariable UUID id) {
-        return boletoService.juros(id, , boletoRequest.getJuros());
+    public void jurosBoleto(@RequestBody BoletoRequest boletoRequest, @PathVariable UUID id) {
+        boletoService.juros(id, boletoRequest.getPayment_date());
     }
 
     @PostMapping

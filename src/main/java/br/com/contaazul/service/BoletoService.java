@@ -13,6 +13,7 @@ import java.time.LocalDate;
 import java.util.Optional;
 import java.util.UUID;
 import java.time.temporal.ChronoUnit;
+import java.util.concurrent.TimeUnit;
 
 @Service
 @RequiredArgsConstructor
@@ -51,11 +52,11 @@ public class BoletoService {
         }
     }
 
-    public BigDecimal juros(UUID id, BigDecimal juros, LocalDate due_date, LocalDate actual_date) {
-        BigDecimal days = new BigDecimal(ChronoUnit.DAYS.between(due_date, actual_date));
-        if (days.compareTo(new BigDecimal(10)) <=0) {
-            return juros.multiply(new BigDecimal("0.005").multiply(days)).setScale(0, RoundingMode.HALF_EVEN);
+    public BigDecimal juros(UUID uuid, LocalDate due_date, LocalDate payment_date, BigDecimal total_in_cents) {
+        if (TimeUnit.MILLISECONDS.toDays((payment_date.getDayOfMonth() - payment_date.getDayOfMonth())) < 10 ) {
+            return total_in_cents.multiply(new BigDecimal("0.005")).setScale(2);
+        } else {
+            return total_in_cents.multiply(new BigDecimal("0.01")).setScale(2);
         }
-        return juros.multiply(new BigDecimal("0.01").multiply(days)).setScale(0, RoundingMode.HALF_EVEN);
     }
 }
