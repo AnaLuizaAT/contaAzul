@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 public class ContaAzulApplication {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         SpringApplication.run(ContaAzulApplication.class);
     }
 }
