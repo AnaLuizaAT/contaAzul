@@ -23,21 +23,15 @@ public class BoletoController {
 
     private final BoletoServiceImpl boletoServiceImpl;
 
-    @GetMapping
-    public Iterable<BoletoEntity> retornarBoletos() {
-        return boletoServiceImpl.retornarBoletos();
-    }
-
-    @GetMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public void jurosBoleto(@RequestBody BoletoRequest boletoRequest, @PathVariable UUID id) {
-        boletoServiceImpl.juros(id, boletoRequest.getDue_date(), boletoRequest.getPayment_date(), boletoRequest.getTotal_in_cents());
-    }
-
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void cadastrarBoleto(@RequestBody BoletoRequest boletoRequest) {
         boletoServiceImpl.cadastrar(boletoRequest);
+    }
+
+    @GetMapping
+    public Iterable<BoletoEntity> retornarBoletos() {
+        return boletoServiceImpl.retornarBoletos();
     }
 
     @PostMapping("/{id}/payment")
@@ -50,5 +44,11 @@ public class BoletoController {
     @ResponseStatus(HttpStatus.OK)
     public void cancelarBoleto(@PathVariable UUID id) {
         boletoServiceImpl.cancelar(id);
+    }
+
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void jurosBoleto(@RequestBody BoletoRequest boletoRequest, @PathVariable UUID id) {
+        boletoServiceImpl.juros(id, boletoRequest.getDue_date(), boletoRequest.getPayment_date(), boletoRequest.getTotal_in_cents());
     }
 }

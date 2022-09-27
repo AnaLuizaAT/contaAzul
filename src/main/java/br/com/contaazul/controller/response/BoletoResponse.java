@@ -12,12 +12,9 @@ import java.time.LocalDate;
 public class BoletoResponse {
 
     private String customer;
-
     private BigDecimal juros;
     private BigDecimal total_in_cents;
-
     private BoletoEnum status;
-
     private LocalDate due_date;
     private LocalDate actual_date;
     private LocalDate payment_date;

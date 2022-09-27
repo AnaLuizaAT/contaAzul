@@ -10,12 +10,9 @@ import java.time.LocalDate;
 public class BoletoRequest {
 
     private String customer;
-
     private BigDecimal juros;
-    private BigDecimal total_in_cents;
-
     private BoletoEnum status;
-
+    private BigDecimal total_in_cents;
     private LocalDate due_date;
     private LocalDate actual_date;
     private LocalDate payment_date;
