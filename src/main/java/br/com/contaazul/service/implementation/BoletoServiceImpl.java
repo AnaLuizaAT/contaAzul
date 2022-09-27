@@ -1,11 +1,11 @@
 package br.com.contaazul.service.implementation;
 
+import lombok.RequiredArgsConstructor;
 import br.com.contaazul.controller.request.BoletoRequest;
 import br.com.contaazul.enums.BoletoEnum;
 import br.com.contaazul.repository.BoletoRepository;
 import br.com.contaazul.repository.entity.BoletoEntity;
 import br.com.contaazul.service.BoletoService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
