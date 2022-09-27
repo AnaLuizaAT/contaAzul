@@ -1,11 +1,11 @@
 package br.com.contaazul.service.implementation;
 
-import lombok.RequiredArgsConstructor;
 import br.com.contaazul.controller.request.BoletoRequest;
 import br.com.contaazul.enums.BoletoEnum;
 import br.com.contaazul.repository.BoletoRepository;
 import br.com.contaazul.repository.entity.BoletoEntity;
 import br.com.contaazul.service.BoletoService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -57,7 +57,7 @@ public class BoletoServiceImpl implements BoletoService {
 
     @Override
     public BigDecimal juros(UUID uuid, LocalDate due_date, LocalDate payment_date, BigDecimal total_in_cents) {
-        if (TimeUnit.MILLISECONDS.toDays((payment_date.getDayOfMonth() - payment_date.getDayOfMonth())) < 10) {
+        if (TimeUnit.MILLISECONDS.toDays((0)) < 10) {
             return total_in_cents.multiply(new BigDecimal("0.005")).setScale(2);
         } else {
             return total_in_cents.multiply(new BigDecimal("0.01")).setScale(2);
